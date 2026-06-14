@@ -11,7 +11,7 @@ sqlalchemy
 passlib
 python-jose
 bcrypt==4.0.1
-apscheduler
+APScheduler
 requests
 beautifulsoup4
 google-search-results
