@@ -88,7 +88,7 @@ def register(request: RegisterRequest, db: Session = Depends(get_db)):
     db.add(user)
     db.commit()
     db.refresh(user)
-    return {"message": "Registration successful!"}
+    return {"message": " :) Registration successful!"}
 
 @app.post("/login")
 def login(request: LoginRequest, db: Session = Depends(get_db)):
@@ -96,7 +96,7 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(
             status_code=401,
-            detail="Invalid email or password!"
+            detail=":( Invalid email or password!"
         )
     if not verify_password(request.password, user.password):
         raise HTTPException(
@@ -192,6 +192,8 @@ def get_history(
 ):
     analyses = db.query(Analysis).filter(
         Analysis.user_id == current_user.id
+    ).order_by(
+    Analysis.created_at.desc()
     ).all()
     return {"history": [
         {

@@ -274,5 +274,18 @@
     "Git",
     "AWS",
     "Agile"
+  ],
+  "Dev Ops Engineer": [
+    "AWS",
+    "Python",
+    "Helm",
+    "CI/CD",
+    "ArgoCD",
+    "Kubernetes",
+    "Docker",
+    "Ansible",
+    "Git",
+    "Bash",
+    "OpenShift"
   ]
 }
