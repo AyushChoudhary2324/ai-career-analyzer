@@ -3,7 +3,7 @@ uvicorn
 pdfplumber
 anthropic
 chromadb
-sentence-transformers
+
 python-multipart
 groq
 python-dotenv
