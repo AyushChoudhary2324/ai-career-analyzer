@@ -11,7 +11,7 @@ const roles = [
   "Backend Developer"
 ]
 
-const API = "http://localhost:8000"
+const API = "https://ai-career-analyzer-gnu5.onrender.com"
 
 function App() {
   const [page, setPage] = useState("login") // login, register, home
