@@ -20,9 +20,16 @@ def populate_chromadb():
     
 def get_role_skills(role_name):
     role_name = role_name.replace("-", " ").replace("_", " ").strip().title()
+    
     with open("roles.json", "r") as f:
         roles = json.load(f)
-    return roles.get(role_name, [])
+    
+    # case insensitive search
+    for key, value in roles.items():
+        if key.lower() == role_name.lower():
+            return value
+    
+    return []
 
 def search_role(role_name):
     results = collection.query(

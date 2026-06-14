@@ -2,7 +2,7 @@ import json
 import os
 import re
 import chromadb
-from sentence_transformers import SentenceTransformer
+
 from groq import Groq
 from dotenv import load_dotenv
 from serpapi import GoogleSearch
@@ -14,7 +14,7 @@ SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 
 client = chromadb.PersistentClient(path="./chroma_db")
 collection = client.get_or_create_collection(name="job_descriptions")
-model = SentenceTransformer('all-MiniLM-L6-v2')
+
 
 # Generic skills to always remove
 GENERIC_SKILLS_BLACKLIST = [

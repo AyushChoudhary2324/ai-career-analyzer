@@ -287,5 +287,19 @@
     "Git",
     "Bash",
     "OpenShift"
+  ],
+  "Electrical Engineer": [
+    "C++",
+    "Python",
+    "MATLAB",
+    "Simulink",
+    "Altium",
+    "Verilog",
+    "VHDL",
+    "SPICE",
+    "power systems",
+    "power distribution",
+    "renewable energy",
+    "electrical engineering"
   ]
 }
