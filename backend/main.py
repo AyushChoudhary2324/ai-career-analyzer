@@ -11,6 +11,7 @@ from resume_parser import extract_text_from_pdf
 from analyzer import analyze_resume, calculate_readiness_score
 from database import get_role_skills
 from models import User, Analysis, create_tables, get_db
+from datetime import datetime
 from scraper import run_scraper, process_role
 from auth import (
     hash_password,
@@ -88,6 +89,7 @@ def register(request: RegisterRequest, db: Session = Depends(get_db)):
     db.add(user)
     db.commit()
     db.refresh(user)
+    print(f"REGISTER: {user.email} at {datetime.utcnow()}")
     return {"message": " :) Registration successful!"}
 
 @app.post("/login")
@@ -104,6 +106,7 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
             detail="Invalid email or password!"
         )
     token = create_access_token({"user_id": user.id})
+    print(f"LOGIN: {user.email} at {datetime.utcnow()}")
     return {
         "access_token": token,
         "token_type": "bearer",
@@ -118,6 +121,8 @@ async def analyze(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    
+    print(f"ANALYZE: {current_user.email} | Role: {role}")
     role = normalize_role(role)
     # Step 1 - save uploaded file temporarily
     temp_path = f"temp_{file.filename}"
@@ -170,6 +175,13 @@ async def analyze(
     db.add(analysis)
     db.commit()
     db.refresh(analysis)
+
+    print(
+    f"ANALYSIS COMPLETE: {current_user.email} | "
+    f"Role: {role} | "
+    f"Score: {score_data['score']}"
+    )
+
 
     # Step 9 - delete temp file
     os.remove(temp_path)
