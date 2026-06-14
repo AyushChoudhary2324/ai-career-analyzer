@@ -5,4 +5,14 @@ anthropic
 chromadb
 sentence-transformers
 python-multipart
+groq
+python-dotenv
 sqlalchemy
+passlib
+python-jose
+bcrypt==4.0.1
+apscheduler
+requests
+beautifulsoup4
+google-search-results
+email-validator
